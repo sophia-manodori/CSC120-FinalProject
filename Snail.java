@@ -2,8 +2,11 @@ import java.util.ArrayList;
 
 public class Snail {
     String name;  
+    String shellColor;
     double water;
     double food;
+    double calcium;
+    
     ArrayList<String> inventory;
 
     Snail(String name, double water, double food) {

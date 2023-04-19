@@ -5,14 +5,14 @@ public class Location {
     boolean containsWater;
     private ArrayList<Plant> plants;
     ArrayList<String> dropped;
-    private ArrayList<String> situation;
+    //private ArrayList<String> situation;
 
     Location(String description, double humidity, boolean containsWater) {
         this.description=description;
         this.humidity=humidity;
         this.containsWater=containsWater;
         this.plants=new ArrayList<>();
-        this.situation=new ArrayList<>();
+        //this.situation=new ArrayList<>();
         this.dropped=new ArrayList<>();
     }
 
