@@ -6,6 +6,7 @@ public class Snail {
     double water;
     double food;
     double calcium;
+    boolean inShell;
     
     ArrayList<String> inventory;
 

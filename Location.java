@@ -3,7 +3,7 @@ public class Location {
     private double humidity;
     private String description;
     boolean containsWater;
-    private ArrayList<Plant> plants;
+    protected ArrayList<Plant> plants;
     ArrayList<String> dropped;
     //private ArrayList<String> situation;
 
@@ -32,8 +32,21 @@ public class Location {
     }
 
     public void addPlant(Plant s) {
-
+        if(!this.plants.contains(s)) {
+             this.plants.add(s);
+        }
+        else {
+            throw new RuntimeException("plant is already in there");
+        }
     }
+
+    public void humidityEffect(Snail s) {
+        if(this.humidity<10) {
+            s.dehydrate();
+        }
+    }
+
+
 
     public static void main(String[] args) {
         Plant lilly = new Plant("Lilly", false, 5);
