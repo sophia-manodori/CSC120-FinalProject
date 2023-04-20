@@ -6,4 +6,11 @@ public class Garden extends Location{
         this.addPlant(s);
     }
     
+    public void description() {
+        System.out.println(this.description + "the humidity is " + this.humidity);
+        System.out.println("You see the following plants:");
+        for(int i = 0; i < this.plants.size(); i++) {
+            System.out.println(this.plants.get(i));
+        }
+    }
 }

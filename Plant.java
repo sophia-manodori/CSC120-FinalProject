@@ -9,6 +9,14 @@ public class Plant {
         this.size=size;
     }
 
+    public String toString() {
+        if(this.isPoison) {
+            return this.name + "is a poisonous plant of size" + this.size;
+        }
+        else {
+            return this.name + "is a non-poisonous plant of size" + this.size;
+        }
+    }
     public boolean isPoison() {
         return this.isPoison;
     }

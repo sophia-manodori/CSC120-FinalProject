@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class Location {
-    private double humidity;
-    private String description;
+    protected double humidity;
+    protected String description;
     boolean containsWater;
     protected ArrayList<Plant> plants;
     ArrayList<String> dropped;
@@ -45,7 +45,7 @@ public class Location {
             s.dehydrate();
         }
     }
-
+    //options method
 
 
     public static void main(String[] args) {
