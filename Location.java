@@ -47,7 +47,6 @@ public class Location {
     }
     //options method
 
-
     public static void main(String[] args) {
         Plant lilly = new Plant("Lilly", false, 5);
         Plant lilac = new Plant("Lilac", true, 5);

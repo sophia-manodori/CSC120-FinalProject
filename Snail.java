@@ -154,7 +154,9 @@ public class Snail {
         this.dehydrate();
         System.out.println("You've produced poison slime. You now will poison anyone who eats you, and you will smell quite un-appetizing.");
     }
-
+    public void options() {
+        System.out.println("You are" + this + " . Type 'pickup' to pick up an object. Type 'drop' to drop an object. Type 'smell' to smell a plant to check if it's poisonous. Type 'eat' to eat an object");
+    }
     public void mate() {
 
     }

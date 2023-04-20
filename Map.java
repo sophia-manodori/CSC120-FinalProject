@@ -7,4 +7,7 @@ public class Map {
         this.map= new Location[5][5];
     }
     
+    public static void main(String[] args) {
+        
+    }
 }
