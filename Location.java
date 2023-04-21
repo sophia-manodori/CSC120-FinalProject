@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Set;
 public class Location {
     protected double humidity;
     protected String description;
     boolean containsWater;
-    protected ArrayList<Plant> plants;
+    protected Hashtable<String, Plant> plants;
     ArrayList<String> dropped;
     //private ArrayList<String> situation;
 
@@ -11,7 +13,7 @@ public class Location {
         this.description=description;
         this.humidity=humidity;
         this.containsWater=containsWater;
-        this.plants=new ArrayList<>();
+        this.plants=new Hashtable();
         //this.situation=new ArrayList<>();
         this.dropped=new ArrayList<>();
     }
@@ -19,8 +21,9 @@ public class Location {
     public void description() {
         System.out.println(this.description + "the humidity is " + this.humidity);
         System.out.println("You see the following plants:");
-        for(int i = 0; i < this.plants.size(); i++) {
-            System.out.println((i+1)+ ". " + this.plants.get(i).name);
+        Set<String> setOfKeys = this.plants.keySet();
+        for(String s : setOfKeys) {
+            System.out.println(s);
         }
     }
 
@@ -28,12 +31,14 @@ public class Location {
         return this.plants.contains(s);
     }
     public void removePlant(Plant s) {
-        this.plants.remove(s);
+        if(this.hasPlant(s)) {
+            this.plants.remove(s.name);
+        }
     }
 
     public void addPlant(Plant s) {
         if(!this.plants.contains(s)) {
-             this.plants.add(s);
+             this.plants.put(s.name, s);
         }
         else {
             throw new RuntimeException("plant is already in there");
@@ -54,8 +59,8 @@ public class Location {
         Plant lilly = new Plant("Lilly", false, 5);
         Plant lilac = new Plant("Lilac", true, 5);
         Location lake = new Location("A beatiful lake, surrounded by trees.", 80, true);
-        lake.plants.add(lilly);
-        lake.plants.add(lilac);
+        lake.addPlant(lilly);
+        lake.addPlant(lilac);
         lake.description();
     }
 }

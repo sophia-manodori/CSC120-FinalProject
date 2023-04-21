@@ -44,7 +44,7 @@ public class Conversation {
         Snail me = new Snail(name);
         while(active) {
             String response = userInput.nextLine();
-            convo.response(response, me);
+            response(response, me);
         }
     }
 }
