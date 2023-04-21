@@ -45,7 +45,10 @@ public class Location {
             s.dehydrate();
         }
     }
-    //options method
+    public void options(Snail s) {
+        s.options();
+        System.out.println("You can also check if your current location has a plant by typing 'has plant'");
+    }
 
     public static void main(String[] args) {
         Plant lilly = new Plant("Lilly", false, 5);

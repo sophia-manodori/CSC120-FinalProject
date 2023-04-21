@@ -8,19 +8,21 @@ public class Snail {
     double calcium;
     double health;
     boolean inShell;
-    
+    Location current;
+    Map map;
+    int x;
+    int y;
     ArrayList<String> inventory;
-    ArrayList<Double> currentLocation;
+    
 
-    Snail(String name, double water, double food, double health, double x, double y) {
+    Snail(String name, double water, double food, double health, int x, int y) {
         this.name=name;
         this.water=water;
         this.food=food;
         this.health=health;
         this.inventory= new ArrayList<>();
-        this.currentLocation=new ArrayList<>(2);
-        this.currentLocation.set(0, x);
-        this.currentLocation.set(1, y);
+        this.x=x;
+        this.y=y;
     }
     /**
      * constructor with set values for food and water. 
@@ -35,10 +37,11 @@ public class Snail {
                         "You are currently holding 1/14th of your body weight in water. It's important to maintain this water level as it helps you produce slime, essential for movement, protection, and reproduction. Your shell, made of calcilum, is looking #fiiinne, and is utalizing a fibonaccii swirl for top notch structural intelligence. ");
         System.out.println("type 'my options' to see what you can do");
         this.inventory=new ArrayList<>();
-        this.currentLocation=new ArrayList<>(2);
-        this.currentLocation.set(0, 0.);
-        this.currentLocation.set(1, 0.);
+        this.x=0;
+        this.y=0;
+        this.current=this.map.map[x][y];
         }
+
     /**
      * snail gets dehydrated (possibly from dry environment)
      */
@@ -122,7 +125,9 @@ public class Snail {
      */
     public void pickUp(String s) {
         if(!this.inventory.contains(s)){
-            this.inventory.add(s);}
+            this.inventory.add(s);
+            System.out.println(s+ " has been added to your inventory");
+        }
         else {
              throw new RuntimeException("You are small. It's best not to pick up several of the same things, for storage reasons. ");
         }
@@ -155,7 +160,55 @@ public class Snail {
         System.out.println("You've produced poison slime. You now will poison anyone who eats you, and you will smell quite un-appetizing.");
     }
     public void options() {
-        System.out.println("You are" + this + " . Type 'pickup' to pick up an object. Type 'drop' to drop an object. Type 'smell' to smell a plant to check if it's poisonous. Type 'eat' to eat an object");
+        System.out.println("You are" + this + " . Type 'pickup' to pick up an object. Type 'drop' to drop an object. Type 'smell' to smell a plant to check if it's poisonous. Type 'eat' to eat an object. Type 'go north' to move. ");
+    }
+
+    public void goNorth() {
+        if(this.y<2) {
+            this.y+=1;
+            this.current=this.map.map[x][y];
+            this.current.description();
+            this.current.humidityEffect(this);
+        }
+        else{
+            throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
+        }
+    }
+    
+    public void goSouth() {
+        if(this.y>0) {
+            this.y-=1;
+            this.current=this.map.map[x][y];
+            this.current.description();
+            this.current.humidityEffect(this);
+        }
+        else{
+            throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
+        }
+    }
+
+    
+    public void goEast() {
+        if(this.x<2) {
+            this.x+=1;
+            this.current=this.map.map[x][y];
+            this.current.description();
+            this.current.humidityEffect(this);
+        }
+        else{
+            throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
+        }
+    }
+    public void goWest() {
+        if(this.x>0) {
+            this.x-=1;
+            this.current=this.map.map[x][y];
+            this.current.description();
+            this.current.humidityEffect(this);
+        }
+        else{
+            throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
+        }
     }
     public void mate() {
 
