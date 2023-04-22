@@ -24,6 +24,12 @@ public class Conversation {
                 System.out.println(e);
             }
         }
+         if(response.equals("smell")) {
+            System.out.println("what plant would you like to smell?");
+            String plant = userInput.nextLine();
+            me.smell(plant);
+            }
+
         if(response.equals("go south"))
         try {me.goSouth();} catch(Exception e) {
             System.out.println(e);

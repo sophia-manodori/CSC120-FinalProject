@@ -105,8 +105,12 @@ public class Snail {
      * @param s
      * @return true if plant is poisonous
      */
-    public boolean smell(Plant s) { 
-        return s.isPoison();
+    public void smell(String p) { 
+        if(this.current.plants.get(p).isPoison()) {
+            System.out.println("This smells poisonous");
+        } else {
+            System.out.println("this plant smells ok");
+        }
     }
     /**
      * adds plant name to inventory
@@ -124,9 +128,8 @@ public class Snail {
      * @param s
      */
     public void pickUp(String s) {
-        if(!this.inventory.contains(s)){
+        if(this.current.plants.containsKey(s)) {
             this.inventory.add(s);
-            System.out.println(s+ " has been added to your inventory");
         }
         else {
              throw new RuntimeException("You are small. It's best not to pick up several of the same things, for storage reasons. ");
@@ -137,10 +140,10 @@ public class Snail {
      * @param s
      * @param l
      */
-    public void drop(String s, Location l) {
+    public void drop(String s) {
         if(this.inventory.contains(s)) {
             this.inventory.remove(s);
-            l.dropped.add(s); //adds to location dropped so we can check for certain situations
+            this.current.dropped.add(s); //adds to location dropped so we can check for certain situations
         }else {
             throw new RuntimeException("You can't drop something you don't have!");
         }
