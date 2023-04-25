@@ -7,6 +7,9 @@ public class Conversation {
         if(response.equals("options")) {
             me.current.options(me);
         }
+        if(response.equals("health")) {
+            System.out.println(me.myHealth());
+        }
         if(response.equals("description")) {
             me.current.description();
         }
@@ -29,6 +32,18 @@ public class Conversation {
             String plant = userInput.nextLine();
             me.smell(plant);
             }
+        if(response.equals("eat")) {
+            System.out.println("what plant would you like to eat?");
+            String plant = userInput.nextLine();
+            try{
+                me.eat(plant);
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+        }
+        if(response.equals("drink")) {
+            me.hydrate();
+        }
 
         if(response.equals("go south"))
         try {me.goSouth();} catch(Exception e) {

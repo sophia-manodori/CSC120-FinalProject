@@ -41,7 +41,13 @@ public class Snail {
         this.y=0;
         this.current=this.map.map[x][y];
         }
-
+    /**
+     * 
+     * @return health points
+     */
+    public double myHealth() {
+        return this.health;
+    }
     /**
      * snail gets dehydrated (possibly from dry environment)
      */
@@ -64,11 +70,11 @@ public class Snail {
      * snail drinks water at given location
      * @param s
      */
-    public double hydrate(Location s) {
+    public double hydrate() {
         if(this.water>10) {
             throw new RuntimeException("You are already fully hydrated!");
         }
-        else if(s.containsWater) {
+        else if(this.current.containsWater) {
             this.water = this.water * 1.2;
             this.health();
         }
@@ -82,21 +88,18 @@ public class Snail {
      * @param s
      * @return
      */
-    public double eat(Plant s, Location l) {
-        if(this.food<10 && l.hasPlant(s)) {
+    public double eat(String p) {
+        if(this.food<10 && this.current.hasPlant(p)) {
             this.food+=1;
-            s.eat();
+            //this.current.plants.get(p).eat();
             this.health();
          }
-        if(s.size < 1) {
-            l.removePlant(s);
-        }
-        else if(s.isPoison()) {
+        else if(this.current.plants.get(p).isPoison()) {
             this.health=-9;
             throw new RuntimeException("You ate poison. Your health has decreased by 9. You will either die, or must eat and drink to restore your health.");
         }
-        else {
-            throw new RuntimeException("You are already full!");
+        if(this.food>9) {
+            System.out.println("You are already full");
         }
         return this.food;
     }
@@ -163,7 +166,7 @@ public class Snail {
         System.out.println("You've produced poison slime. You now will poison anyone who eats you, and you will smell quite un-appetizing.");
     }
     public void options() {
-        System.out.println("You are" + this + " . Type 'pickup' to pick up an object. Type 'drop' to drop an object. Type 'smell' to smell a plant to check if it's poisonous. Type 'eat' to eat an object. Type 'go north' to move. ");
+        System.out.println("You are" + this + " . Type 'pickup' to pick up an object. Type 'drop' to drop an object. Type 'smell' to smell a plant to check if it's poisonous. Type 'eat' to eat an object. Type 'go north' to move. Type 'health' to see your health points");
     }
 
     public void goNorth() {
