@@ -30,6 +30,9 @@ public class Location {
     public boolean hasPlant(Plant s) {
         return this.plants.contains(s);
     }
+    public boolean hasPlant(String s) {
+        return this.plants.containsKey(s);
+    }
     public void removePlant(Plant s) {
         if(this.hasPlant(s)) {
             this.plants.remove(s.name);

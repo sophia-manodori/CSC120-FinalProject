@@ -8,6 +8,11 @@ public class Plant {
         this.isPoison=isPoison;
         this.size=size;
     }
+    public Plant(String name, boolean isPoison) {
+        this.name=name;
+        this.isPoison=isPoison;
+        this.size=5;
+    }
 
     public String toString() {
         if(this.isPoison) {
@@ -20,7 +25,7 @@ public class Plant {
     public boolean isPoison() {
         return this.isPoison;
     }
-    public void eat() {
-        this.size-= 1;
-    }
+    //public void eat() {
+      //  this.size-= 1;
+    //}
 }
