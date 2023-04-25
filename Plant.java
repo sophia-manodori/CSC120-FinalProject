@@ -2,11 +2,13 @@ public class Plant {
     String name;
     boolean isPoison;
     double size;
+    boolean isPlantable;
 
-    public Plant(String name, boolean isPoison, double size) {
+    public Plant(String name, boolean isPoison, double size, boolean isPlantable) {
         this.name=name;
         this.isPoison=isPoison;
         this.size=size;
+        this.isPlantable=isPlantable;
     }
 
     public String toString() {

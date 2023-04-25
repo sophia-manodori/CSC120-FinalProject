@@ -4,7 +4,7 @@ public class Garden extends Location{
         super(description, 10, true);
     }
     public void plant(String s) {
-        Plant p = new Plant(s, false, 1);
+        Plant p = new Plant(s, false, 1, true);
         this.plants.put(s, p);
     }
     
