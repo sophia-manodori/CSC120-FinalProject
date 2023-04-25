@@ -59,11 +59,7 @@ public class Location {
     }
 
     public static void main(String[] args) {
-        Plant lilly = new Plant("Lilly", false, 5);
-        Plant lilac = new Plant("Lilac", true, 5);
         Location lake = new Location("A beatiful lake, surrounded by trees.", 80, true);
-        lake.addPlant(lilly);
-        lake.addPlant(lilac);
         lake.description();
     }
 }

@@ -14,16 +14,23 @@ public class Conversation {
             me.current.description();
         }
         if(response.equals("go north")) {
-            me.goNorth();
+            try{me.goNorth();} catch(Exception e) {
+                System.out.println(e);
+            }
+
         }
         if(response.equals("go east")) {
-            me.goEast();
+            try{me.goEast();} catch(Exception e) {
+                System.out.println(e);
+            }
         }
         if(response.equals("go west")) {
-            me.goWest();
+            try{me.goWest();} catch(Exception e) {
+                System.out.println(e);
+            }
         }
         if(response.equals("go south")) {
-            try {me.goNorth();} catch(Exception e) {
+            try {me.goSouth();} catch(Exception e) {
                 System.out.println(e);
             }
         }

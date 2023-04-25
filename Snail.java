@@ -20,6 +20,7 @@ public class Snail {
         this.water=water;
         this.food=food;
         this.health=health;
+        this.inShell = false;
         this.inventory= new ArrayList<>();
         this.x=x;
         this.y=y;
@@ -39,6 +40,7 @@ public class Snail {
         this.inventory=new ArrayList<>();
         this.x=0;
         this.y=0;
+        this.inShell = false;
         this.current=this.map.map[x][y];
         }
     /**
@@ -82,6 +84,22 @@ public class Snail {
             throw new RuntimeException("There is no water at this location");
         }
         return this.water;
+    }
+    /**
+     * snail retreats into shell
+     * @return inShell
+     */
+    public boolean retreat() {
+        this.inShell = true;
+        return this.inShell;
+    }
+    /**
+     * snail retreats into shell
+     * @return inShell
+     */
+    public boolean emerge() {
+        this.inShell = false;
+        return this.inShell;
     }
     /**
      * eats a plant, removes it if too small from location
@@ -215,9 +233,6 @@ public class Snail {
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
         }
-    }
-    public void mate() {
-
     }
 
     public void layEggs() {
