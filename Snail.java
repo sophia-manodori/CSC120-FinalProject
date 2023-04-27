@@ -107,7 +107,7 @@ public class Snail {
      * @return
      */
     public double eat(String p) {
-        if(this.food<10 && this.current.hasPlant(p)) {
+        if(this.food<10 && (this.current.hasPlant(p)|| this.inventory.contains(p))) {
             this.food+=1;
             //this.current.plants.get(p).eat();
             this.health();
