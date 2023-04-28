@@ -19,7 +19,7 @@ public class Location {
     }
 
     public void description() {
-        System.out.println(this.description + "the humidity is " + this.humidity);
+        System.out.println(this.description + " the humidity is " + this.humidity);
         System.out.println("You see the following plants:");
         Set<String> setOfKeys = this.plants.keySet();
         for(String s : setOfKeys) {
@@ -51,6 +51,7 @@ public class Location {
     public void humidityEffect(Snail s) {
         if(this.humidity<10) {
             s.dehydrate();
+            System.out.println("Oh no! It's very dry. You have been dehydrated by the heat.");
         }
     }
     public void options(Snail s) {

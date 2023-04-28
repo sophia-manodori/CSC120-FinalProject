@@ -4,7 +4,7 @@ public class Map {
     int y;
 
     Map() {
-        this.map= new Location[5][5];
+        this.map= new Location[3][3];
     }
     
     public static void main(String[] args) {

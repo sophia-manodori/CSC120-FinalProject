@@ -29,7 +29,7 @@ public class Snail {
      * constructor with set values for food and water. 
      * @param name
      */
-    Snail(String name) {
+    Snail(String name, Map map) {
         this.name=name;
         this.water=10;
         this.food=10;
@@ -38,6 +38,7 @@ public class Snail {
                         "You are currently holding 1/14th of your body weight in water. It's important to maintain this water level as it helps you produce slime, essential for movement, protection, and reproduction. Your shell, made of calcilum, is looking #fiiinne, and is utalizing a fibonaccii swirl for top notch structural intelligence. ");
         System.out.println("type 'my options' to see what you can do");
         this.inventory=new ArrayList<>();
+        this.map = map;
         this.x=0;
         this.y=0;
         this.inShell = false;
@@ -79,6 +80,7 @@ public class Snail {
         else if(this.current.containsWater) {
             this.water = this.water * 1.2;
             this.health();
+            System.out.println("You have drinken water! Your water is now at " + this.water);
         }
         else {
             throw new RuntimeException("There is no water at this location");
@@ -91,6 +93,7 @@ public class Snail {
      */
     public boolean retreat() {
         this.inShell = true;
+        System.out.println("You are safe. In fact, you are so comfortable that if you wished, you could stay here for up to 7 years. Snails have been documented to take multi-year long hibernations when climate renders the habitat unliveable. This can happen when it becomes really dry, or when it snows. They slow their heart beat and simply... take a break, until they sense the humidity is more favorable. Then, sometimes after several years, they re-emerge.");
         return this.inShell;
     }
     /**
@@ -111,6 +114,7 @@ public class Snail {
             this.food+=1;
             //this.current.plants.get(p).eat();
             this.health();
+            System.out.println("You have eaten the" + p + ". Your food level is now" + this.food);
          }
         else if(this.current.plants.get(p).isPoison()) {
             this.health=-9;
@@ -184,11 +188,11 @@ public class Snail {
         System.out.println("You've produced poison slime. You now will poison anyone who eats you, and you will smell quite un-appetizing.");
     }
     public void options() {
-        System.out.println("You are" + this + " . Type 'pickup' to pick up an object. Type 'drop' to drop an object. Type 'smell' to smell a plant to check if it's poisonous. Type 'eat' to eat an object. Type 'go north' to move. Type 'health' to see your health points");
+        System.out.println("You are" + this.name + " the snail. Type 'pickup' to pick up an object. \n Type 'drop' to drop an object. \n Type 'smell' to smell a plant to check if it's poisonous. \n Type 'eat' to eat an object. \n Type 'go north', 'go south', 'go east', 'go west' to move. \nType 'health' to see your health points. \n Type 'retreat' to retreat into your shell if you feel danger.");
     }
 
     public void goNorth() {
-        if(this.y<2) {
+        if(this.y>=0 && y<2) {
             this.y+=1;
             this.current=this.map.map[x][y];
             this.current.description();
@@ -200,7 +204,7 @@ public class Snail {
     }
     
     public void goSouth() {
-        if(this.y>0) {
+        if(this.y>=0) {
             this.y-=1;
             this.current=this.map.map[x][y];
             this.current.description();
@@ -213,7 +217,7 @@ public class Snail {
 
     
     public void goEast() {
-        if(this.x<2) {
+        if(this.x>=0) {
             this.x+=1;
             this.current=this.map.map[x][y];
             this.current.description();
@@ -224,7 +228,7 @@ public class Snail {
         }
     }
     public void goWest() {
-        if(this.x>0) {
+        if(this.x>=0) {
             this.x-=1;
             this.current=this.map.map[x][y];
             this.current.description();
@@ -232,6 +236,25 @@ public class Snail {
         }
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
+        }
+    }
+    public void helpSnail(String s) {
+        if(!(this.x == 0)) {
+            throw new RuntimeException("No snail to help here!");
+        }
+        if(!(this.y == 1)) {
+            throw new RuntimeException("No snail to help here!");
+        }
+        if(this.current.dropped.contains(s)) {
+            System.out.println("You feed the snail the" + s +". They start to look revitalized. Snails can actually regenerate their antennae, and it seems this snail needed some extra nourishment to start to heal themselves. The snail gives you a wave of their good antennae and shoots you what you swear is... a wink? Scandelous. The snail turns, and begins to slowly make their way away.");
+        }
+    }
+    public void canHelpSnail() {
+        if(this.x==0 && this.y==1) {
+            System.out.println("You decide to help the snail. It seems it needs some food. go find a plant, and pick it up. Come back and drop it in front of the snail, and type 'feed snail' when you've gotten the food. ");
+        }
+        else {
+            System.out.println("no snail to be seen here!");
         }
     }
 

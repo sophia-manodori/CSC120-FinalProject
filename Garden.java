@@ -10,8 +10,10 @@ public class Garden extends Location{
     
     public void description() {
         System.out.println(this.description + "the humidity is " + this.humidity);
-        System.out.println("You see the following plants that you have planted");
         Set<String> setOfKeys = this.plants.keySet();
+        if(this.plants.size()>0){
+            System.out.println("You see the following plants that you have planted");
+        }
         if(this.plants.size() == 0) {
             System.out.println("You haven't planted any plants here yet. Go collect some plants and you can plant them from your inventory by typing 'plant'");
         }
