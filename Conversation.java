@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Conversation {
     int responseNum = 0;
     boolean active;
-    public void Conversation() {
+    public Conversation() {
         this.active=true;
     }
     
