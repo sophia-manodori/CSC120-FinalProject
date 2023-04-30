@@ -60,12 +60,20 @@ public class Conversation {
             }
         }
         if(response.equals("help snail")) {
-            me.canHelpSnail();
+            try {
+                me.canHelpSnail();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         if(response.equals("feed snail")) {
             System.out.println("What have you decided to feed the snail?");
             String plant = userInput.nextLine();
-            me.helpSnail(plant);
+            try {
+                me.helpSnail(plant);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         if(response.equals("go south"))
         try {me.goSouth();} catch(Exception e) {
@@ -74,22 +82,31 @@ public class Conversation {
         if(response.equals("retreat")) {
             me.retreat();
         }
+        if(response.equals("emerge")) {
+            me.emerge();
+        }
         if(response.equals("pickup")) {
             System.out.println("what plant would you like to pick up?");
             String plant = userInput.nextLine();
             me.pickUp(plant);
         }
-        else {
+        if(response.equals("quit")) {
+            System.out.println("Thanks for playing");
+            this.active=false;
+        }
+        else{
             System.out.println("I don't understand. Try again, or type 'options' to see what you can do");
         }
-        //if(response.equals("quit")) {
-          //  System.out.println("Thanks for playing");
-            //this.active=false;
-        //}
     }
     
     public static void main(String[] args) {
-        Location forest = new Location("A forest", 11, false);
+        Location forest = new Location("You are in a lush forest. Surrounded by large maple trees and damp soil beneath you. Dappled light shines through the leaves.", 11, false);
+        Plant shitake = new Plant("Shitake", "A patch of brown mushrooms growing from the base of a tree.", false);
+        Plant ivy = new Plant("Poison Ivy", "A spiraling plant with three shiny leaves at every arm", true);
+        Plant moss = new Plant("Moss", "Short little patches of soft green fronds, damp with dew", false);
+        forest.addPlant(shitake);
+        forest.addPlant(moss);
+        forest.addPlant(ivy);
         Location marsh = new Location("A marsh", 12, true);
         Garden garden = new Garden("Beautiful garden. Injured Snail");
         Location desert = new Location("desert", 0, false);
@@ -104,13 +121,13 @@ public class Conversation {
         System.out.println("Welcome. Type your snail's name to begin.");
         String name = userInput.nextLine();
         Snail me = new Snail(name, map);
-        boolean active = true;
-        while(active) {
+        convo.active=true;
+        while(convo.active) {
             String response = userInput.nextLine();
             response=response.toLowerCase();
-            if(response.equals("quit")) {
-                active = false;
-            }
+            //if(response.equals("quit")) {
+            //    active = false;
+            //}
             convo.response(response, me);
         }
     }

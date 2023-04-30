@@ -1,27 +1,34 @@
 public class Plant {
     String name;
     boolean isPoison;
-    double size;
+    String description;
     boolean isPlantable;
 
-    public Plant(String name, boolean isPoison, double size, boolean isPlantable) {
+    public Plant(String name, String description, boolean isPoison, double size, boolean isPlantable) {
         this.name=name;
         this.isPoison=isPoison;
-        this.size=size;
+        //this.size=size;
+        this.description=description;
         this.isPlantable=isPlantable;
+    }
+    public Plant(String name, String description, boolean isPoison) {
+        this.name=name;
+        this.isPoison=isPoison;
+        this.description=description; 
+       // this.size=5;
     }
     public Plant(String name, boolean isPoison) {
         this.name=name;
         this.isPoison=isPoison;
-        this.size=5;
+       // this.size=5;
     }
 
     public String toString() {
         if(this.isPoison) {
-            return this.name + "is a poisonous plant of size" + this.size;
+            return this.name + "is a poisonous plant. It looks like" + this.description;
         }
         else {
-            return this.name + "is a non-poisonous plant of size" + this.size;
+            return this.name + "is a non-poisonous. It looks like" + this.description;
         }
     }
     public boolean isPoison() {
