@@ -4,11 +4,23 @@ import java.util.Set;
 public class Location {
     protected double humidity;
     protected String description;
+    protected String situation;
+    protected boolean hasPlayed;
     boolean containsWater;
     protected Hashtable<String, Plant> plants;
     ArrayList<String> dropped;
     //private ArrayList<String> situation;
 
+    Location(String description, String situation, double humidity, boolean containsWater) {
+        this.description=description;
+        this.humidity=humidity;
+        this.containsWater=containsWater;
+        this.plants=new Hashtable();
+        //this.situation=new ArrayList<>();
+        this.dropped=new ArrayList<>();
+        this.hasPlayed=false;
+        this.situation=situation;
+    }
     Location(String description, double humidity, boolean containsWater) {
         this.description=description;
         this.humidity=humidity;
@@ -16,9 +28,14 @@ public class Location {
         this.plants=new Hashtable();
         //this.situation=new ArrayList<>();
         this.dropped=new ArrayList<>();
+        this.hasPlayed=true;
     }
 
     public void description() {
+        if(!this.hasPlayed) {
+            System.out.println(this.situation);
+            this.hasPlayed=true;
+        }
         System.out.println(this.description + " the humidity is " + this.humidity);
         System.out.println("You see the following plants:");
         Set<String> setOfKeys = this.plants.keySet();

@@ -48,8 +48,8 @@ public class Snail {
      * 
      * @return health points
      */
-    public double myHealth() {
-        return this.health;
+    public boolean myHealth() {
+        return !(this.health>0);
     }
     /**
      * snail gets dehydrated (possibly from dry environment)
@@ -64,6 +64,12 @@ public class Snail {
     public void health() {
         if(this.water==10 && this.food==10) {
             this.health = 10;
+        }
+        if(this.food<1){
+            this.health =- 1;
+        }
+        if(this.water<1){
+            this.health =- 1;
         }
         if(this.health<0) {
             throw new RuntimeException("You have died.");
@@ -153,6 +159,9 @@ public class Snail {
      * @param s
      */
     public void pickUp(String s) {
+        if(!this.current.plants.get(s).isPlantable) {
+            throw new RuntimeException("You cannot pick up that plant");
+        }
         if(this.current.plants.containsKey(s)) {
             this.inventory.add(s);
         }
@@ -187,57 +196,77 @@ public class Snail {
         this.dehydrate();
         System.out.println("You've produced poison slime. You now will poison anyone who eats you, and you will smell quite un-appetizing.");
     }
+    /**
+     * prints options
+     */
     public void options() {
         System.out.println("You are" + this.name + " the snail. Type 'pickup' to pick up an object. \n Type 'drop' to drop an object. \n Type 'smell' to smell a plant to check if it's poisonous. \n Type 'eat' to eat an object. \n Type 'go north', 'go south', 'go east', 'go west' to move. \nType 'health' to see your health points. \n Type 'retreat' to retreat into your shell if you feel danger.");
     }
-
+    /**
+     * go north
+     */
     public void goNorth() {
         if(this.y>=0 && y<2) {
             this.y+=1;
             this.current=this.map.map[x][y];
             this.current.description();
             this.current.humidityEffect(this);
+            this.food=-1;
         }
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
         }
     }
-    
+    /**
+     * go south
+     */
     public void goSouth() {
         if(this.y>=0) {
             this.y-=1;
             this.current=this.map.map[x][y];
             this.current.description();
             this.current.humidityEffect(this);
+            this.food=-1;
         }
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
         }
     }
 
-    
+    /**
+     * go east
+     */
     public void goEast() {
         if(this.x>=0) {
             this.x+=1;
             this.current=this.map.map[x][y];
             this.current.description();
             this.current.humidityEffect(this);
+            this.food=-1;
         }
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
         }
     }
+    /**
+     * go west
+     */
     public void goWest() {
         if(this.x>=0) {
             this.x-=1;
             this.current=this.map.map[x][y];
             this.current.description();
             this.current.humidityEffect(this);
+            this.food=-1;
         }
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
         }
     }
+    /**
+     * "gives" food to injured snail
+     * @param s
+     */
     public void helpSnail(String s) {
         if(!(this.x == 0)) {
             throw new RuntimeException("No snail to help here!");
@@ -249,6 +278,9 @@ public class Snail {
             System.out.println("You feed the snail the" + s +". They start to look revitalized. Snails can actually regenerate their antennae, and it seems this snail needed some extra nourishment to start to heal themselves. The snail gives you a wave of their good antennae and shoots you what you swear is... a wink? Scandelous. The snail turns, and begins to slowly make their way away.");
         }
     }
+    /**
+     * checks if you can help the snail
+     */
     public void canHelpSnail() {
         if(this.x==0 && this.y==1) {
             System.out.println("You decide to help the snail. It seems it needs some food. go find a plant, and pick it up. Come back and drop it in front of the snail, and type 'feed snail' when you've gotten the food. ");

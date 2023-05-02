@@ -11,7 +11,7 @@ public class Plant {
         this.description=description;
         this.isPlantable=isPlantable;
     }
-    public Plant(String name, String description, boolean isPoison) {
+    public Plant(String name, String description, boolean isPoison, boolean isPlantable) {
         this.name=name;
         this.isPoison=isPoison;
         this.description=description; 
