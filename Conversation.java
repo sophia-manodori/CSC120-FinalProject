@@ -109,8 +109,10 @@ public class Conversation {
         forest.addPlant(shitake);
         forest.addPlant(moss);
         forest.addPlant(ivy);
-        Location marsh = new Location("A marsh", "If there were a situation it would go here",12, true);
+        Location marsh = new Location("A marsh", "there is a large bird",12, true);
+        Plant cordgrass = new Plant()
         Garden garden = new Garden("Beautiful garden. Injured Snail");
+        Forest denseForest = new Forest("large forest with big trees");
         Location desert = new Location("desert", 0, false);
         Location tropic = new Location("tropical forest", 13, true);
         Map map = new Map();
@@ -118,6 +120,8 @@ public class Conversation {
         map.map[1][0] = marsh;
         map.map[0][1] = garden;
         map.map[1][1] = desert;
+        map.map[2][0] = denseForest;
+        map.map[2][1] = tropic;
         Conversation convo = new Conversation();
         Scanner userInput = new Scanner(System.in);
         System.out.println("Welcome. Type your snail's name to begin.");
