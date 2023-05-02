@@ -97,6 +97,7 @@ public class Conversation {
         else{
             System.out.println("I don't understand. Try again, or type 'options' to see what you can do");
         }
+        userInput.close();
     }
     
     public static void main(String[] args) {
@@ -121,7 +122,6 @@ public class Conversation {
         System.out.println("Welcome. Type your snail's name to begin.");
         String name = userInput.nextLine();
         Snail me = new Snail(name, map);
-        convo.active=true;
         while(convo.active) {
             String response = userInput.nextLine();
             response=response.toLowerCase();
@@ -130,6 +130,7 @@ public class Conversation {
             //}
             convo.response(response, me);
         }
+        userInput.close();
     }
 }
 
