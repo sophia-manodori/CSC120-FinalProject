@@ -40,7 +40,7 @@ public class Location {
         System.out.println("You see the following plants:");
         Set<String> setOfKeys = this.plants.keySet();
         for(String s : setOfKeys) {
-            System.out.println(plants.get(s).description);
+            System.out.println(plants.get(s).name + ": " + plants.get(s).description);
         }
     }
 
