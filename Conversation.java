@@ -111,7 +111,7 @@ public class Conversation {
         forest.addPlant(ivy);
         Garden garden = new Garden("You find yourself in a beautiful garden with flourishing plants. There are paths to the north, south, and east. Injured Snail");
         Location lake = new Location("You are on the shores of a great lake stretching as far as the eye can see to the north and west. The lake is a stunning site and lots of plants are growing in the shallows and around the shore. Paths behind you flow to the north and east. ", 10, true);
-        Plant waterweed = new Plant("common waterweed", "a weed growing in the water", false, false, false);
+        Plant waterweed = new Plant("waterweed", "a weed growing in the water", false, false, false);
         Plant iris = new Plant("iris", "a plant with several violet-blue flowers with yellow-based sepals that emerge on sturdy stalks among tall sword-like leaves growing along the shore", false, true, false);
         Plant lilies = new Plant("lilies", "large white flowers", false, true, false);
         lake.addPlant(lilies);
@@ -122,10 +122,10 @@ public class Conversation {
         marsh.addPlant(cordgrass);
         Forest denseForest = new Forest("large forest with big trees");
         Location meadow = new Location("You are in a large meadow with lots of colorful wildflowers. A small creek cuts through the center. There paths heading in all directions", 10, true);
-        Plant sunflower = new Plant("sunflower", "sunflower: The large golden flowers stick up boldly in the grasses of the meadow", false,true,false);
-        Plant marigolds = new Plant("marigolds","marigolds: colorful ruffled, bright petals dot the meadow with red and orange", false, true, false);
-        Plant delphiniums = new Plant("delphiniums", "delphiniums: the pretty blue flowers grow along the creek", true, true, false);
-        Plant dahlias = new Plant("dahlias", "dahlias: the colorful flowers are spread among the other flowers", false, true, false);
+        Plant sunflower = new Plant("sunflower", "The large golden flowers stick up boldly in the grasses of the meadow", false,true,false);
+        Plant marigolds = new Plant("marigolds","colorful ruffled, bright petals dot the meadow with red and orange", false, true, false);
+        Plant delphiniums = new Plant("delphiniums", "the pretty blue flowers grow along the creek", true, true, false);
+        Plant dahlias = new Plant("dahlias", "the colorful flowers are spread among the other flowers", false, true, false);
         Plant dandelions = new Plant("dandelions", "dandelions: they sprout throughout the meadow", false, true, false);
         Plant chrysanthemums = new Plant("chrysanthemums", "chrysanthemums: the large bushy flowers come in many colors", false, true, false);
         meadow.addPlant(chrysanthemums);
