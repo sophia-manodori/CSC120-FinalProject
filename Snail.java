@@ -8,6 +8,7 @@ public class Snail {
     double calcium;
     double health;
     boolean inShell;
+    boolean steppedOn;
     Location current;
     Map map;
     int x;
@@ -75,6 +76,14 @@ public class Snail {
             throw new RuntimeException("You have died.");
         }
     }
+
+    public Boolean steppedOn(){
+        if (this.x==2 && this.y==2){
+            steppedOn = true;
+        }
+        return steppedOn;
+    }
+
     /**
      * snail drinks water at given location
      * @param s
@@ -86,7 +95,7 @@ public class Snail {
         else if(this.current.containsWater) {
             this.water = this.water * 1.2;
             this.health();
-            System.out.println("You have drinken water! Your water is now at " + this.water);
+            System.out.println("You have drunken water! Your water is now at " + this.water);
         }
         else {
             throw new RuntimeException("There is no water at this location");
@@ -98,8 +107,14 @@ public class Snail {
      * @return inShell
      */
     public boolean retreat() {
-        this.inShell = true;
-        System.out.println("You are safe. In fact, you are so comfortable that if you wished, you could stay here for up to 7 years. Snails have been documented to take multi-year long hibernations when climate renders the habitat unliveable. This can happen when it becomes really dry, or when it snows. They slow their heart beat and simply... take a break, until they sense the humidity is more favorable. Then, sometimes after several years, they re-emerge.");
+        if(this.steppedOn = true){
+            System.out.println("You are unable to retreat into your shell because you currently don't have one.");
+            this.inShell = false;
+        }
+        else {
+            this.inShell = true;
+            System.out.println("You are safe. In fact, you are so comfortable that if you wished, you could stay here for up to 7 years. Snails have been documented to take multi-year long hibernations when climate renders the habitat unliveable. This can happen when it becomes really dry, or when it snows. They slow their heart beat and simply... take a break, until they sense the humidity is more favorable. Then, sometimes after several years, they re-emerge.");
+        }
         return this.inShell;
     }
     /**
@@ -121,7 +136,7 @@ public class Snail {
             //this.current.plants.get(p).eat();
             this.health();
             System.out.println("You have eaten the" + p + ". Your food level is now" + this.food);
-         }
+        }
         else if(this.current.plants.get(p).isPoison()) {
             this.health=-9;
             throw new RuntimeException("You ate poison. Your health has decreased by 9. You will either die, or must eat and drink to restore your health.");

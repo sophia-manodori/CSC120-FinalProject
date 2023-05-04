@@ -1,6 +1,7 @@
 public class Plant {
     String name;
     boolean isPoison;
+    boolean hasCalcium;
     String description;
     boolean isPlantable;
 
@@ -11,7 +12,7 @@ public class Plant {
         this.description=description;
         this.isPlantable=isPlantable;
     }
-    public Plant(String name, String description, boolean isPoison, boolean isPlantable) {
+    public Plant(String name, String description, boolean isPoison, boolean isPlantable, boolean hasCalcium) {
         this.name=name;
         this.isPoison=isPoison;
         this.description=description; 
