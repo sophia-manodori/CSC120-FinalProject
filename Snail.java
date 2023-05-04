@@ -185,7 +185,7 @@ public class Snail {
             this.inventory.add(s);
         }
         else {
-             throw new RuntimeException("You are small. It's best not to pick up several of the same things, for storage reasons. ");
+            throw new RuntimeException("You are small. It's best not to pick up several of the same things, for storage reasons. ");
         }
     }
     /**

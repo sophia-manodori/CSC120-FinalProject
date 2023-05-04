@@ -21,7 +21,7 @@ public class Garden extends Location{
             for(String s : setOfKeys) {
                 System.out.println(s);
             }
-         }   
+        }   
         }
     }
 

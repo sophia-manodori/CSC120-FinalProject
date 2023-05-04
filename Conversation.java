@@ -75,10 +75,10 @@ public class Conversation {
             }
         }
         else if(response.equals("go south"))
-             try {
+            try {
                 me.goSouth();
             } 
-             catch(Exception e) {
+            catch(Exception e) {
             System.out.println(e);
             }
         else if(response.equals("retreat")) {
@@ -118,7 +118,7 @@ public class Conversation {
         lake.addPlant(iris);
         lake.addPlant(waterweed);
         Location marsh = new Location("You are in a wet marsh with lots of tall grasses. A path with large trees carves to the east. There is a similar path to the west. There is also a dry dusty little trail to the north. ", "There is a large bird hunting overhead. If you don't hide it will probably kill you",12, true);
-        Plant cordgrass = new Plant("Cordgrass", "tall grass growing everywhere across the marsh", false, true, false);
+        Plant cordgrass = new Plant("cordgrass", "tall grass growing everywhere across the marsh", false, true, false);
         marsh.addPlant(cordgrass);
         Forest denseForest = new Forest("large forest with big trees");
         Location meadow = new Location("You are in a large meadow with lots of colorful wildflowers. A small creek cuts through the center. There paths heading in all directions", 10, true);
@@ -137,7 +137,7 @@ public class Conversation {
         Location mountainTop = new Location("You have some how made your way to the top of a tall mountain. You are above the tree line and not much grows here due to the high altitude. the air is thin and dry but you can see for miles and miles. To the north there is nothing but endless forest streaching on forever, to the south you can see a large meadow with splashes of bright flowers and plants and further south is a marsh with birds flying over, to the west is a grand lake and south of that you see a garden, to the east is a small town with houses in neat rows down streets and further south of that is a tropical forest. ", 0, false);
         Location desert = new Location("a sandy dry desert suck the moisture out of you as you enter it", 0, false);
         Location street = new Location ("you are on a street lined with houses ", "A foot steps on you and crushes your shell find calcium rich food to repair it. there might be some fruit near by that has calcium", 5, false);
-        Plant tulip = new Plant("Tulip","large, showy and brightly colored flowers planted along the street",false, 4, true);
+        Plant tulip = new Plant("tulip","large, showy and brightly colored flowers planted along the street",false, 4, true);
         Plant rose = new Plant("roses", "lovely bushes with large flowers in red growing in front of the white picket fences in every yard", false, true, false);
         street.addPlant(tulip);
         street.addPlant(rose);

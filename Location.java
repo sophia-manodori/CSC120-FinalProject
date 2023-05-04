@@ -58,7 +58,7 @@ public class Location {
 
     public void addPlant(Plant s) {
         if(!this.plants.contains(s)) {
-             this.plants.put(s.name, s);
+            this.plants.put(s.name, s);
         }
         else {
             throw new RuntimeException("plant is already in there");
