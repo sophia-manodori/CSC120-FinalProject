@@ -122,12 +122,12 @@ public class Conversation {
         marsh.addPlant(cordgrass);
         Forest denseForest = new Forest("large forest with big trees");
         Location meadow = new Location("You are in a large meadow with lots of colorful wildflowers. A small creek cuts through the center. There paths heading in all directions", 10, true);
-        Plant sunflower = new Plant("sunflower", "large flowers with thick stems. they have yellow petals that radiate drom a brown center", false,true,false);
-        Plant marigolds = new Plant("marigolds","the flowers have tiny florets surrounded by many layers of delicate, ruffled, bright petals and a thick hollow stem with fernlike leaves. The flowers range from red to orange to yellow", false, true, false);
-        Plant delphiniums = new Plant("delphiniums", "", true, true, false);
-        Plant dahlias = new Plant("dahlias", "beautiful flowers that are in all colors", false, true, false);
-        Plant dandelions = new Plant("dandelions", "a strong weed with small yellow flowers that have numerous little petals", false, true, false);
-        Plant chrysanthemums = new Plant("chrysanthemums", "large bushy flowers in many colors", false, true, false);
+        Plant sunflower = new Plant("sunflower", "sunflower: The large golden flowers stick up boldly in the grasses of the meadow", false,true,false);
+        Plant marigolds = new Plant("marigolds","marigolds: colorful ruffled, bright petals dot the meadow with red and orange", false, true, false);
+        Plant delphiniums = new Plant("delphiniums", "delphiniums: the pretty blue flowers grow along the creek", true, true, false);
+        Plant dahlias = new Plant("dahlias", "dahlias: the colorful flowers are spread among the other flowers", false, true, false);
+        Plant dandelions = new Plant("dandelions", "dandelions: they sprout throughout the meadow", false, true, false);
+        Plant chrysanthemums = new Plant("chrysanthemums", "chrysanthemums: the large bushy flowers come in many colors", false, true, false);
         meadow.addPlant(chrysanthemums);
         meadow.addPlant(sunflower);
         meadow.addPlant(marigolds);
