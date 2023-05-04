@@ -16,6 +16,7 @@ public class Plant {
         this.name=name;
         this.isPoison=isPoison;
         this.description=description; 
+        this.hasCalcium = hasCalcium;
        // this.size=5;
     }
     public Plant(String name, boolean isPoison) {
@@ -39,6 +40,9 @@ public class Plant {
       //  this.size-= 1;
     //}
     public boolean hasCalcium(boolean b) {
+        return false;
+    }
+    public boolean hasCalcium() {
         return false;
     }
 }
