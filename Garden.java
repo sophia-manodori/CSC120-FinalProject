@@ -6,6 +6,7 @@ public class Garden extends Location{
     public void plant(String s) {
         Plant p = new Plant(s, true);
         this.plants.put(s, p);
+        System.out.println("You have planted " + s);
     }
     
     public void description() {

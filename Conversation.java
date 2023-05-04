@@ -11,8 +11,18 @@ public class Conversation {
         if(response.equals("options")) {
             me.current.options(me);
         }
+        else if(response.equals("plant")){
+            if(me.current instanceof Garden){
+                System.out.println("what would you  like to plant?");
+                String plant=userInput.nextLine();
+                ((Garden)me.current).plant(plant);
+            }
+            else{
+                throw new RuntimeException("You must be in the garden to plant things");
+            }
+        }
         else if(response.equals("health")) {
-            System.out.println(me.myHealth());
+            System.out.println(me.healthPoints());
         }
         else if(response.equals("description")) {
             me.current.description();
@@ -90,7 +100,11 @@ public class Conversation {
         else if(response.equals("pickup")) {
             System.out.println("what plant would you like to pick up?");
             String plant = userInput.nextLine();
-            me.pickUp(plant);
+            try{
+                me.pickUp(plant);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         else if(response.equals("quit")) {
             System.out.println("Thanks for playing");
@@ -103,9 +117,9 @@ public class Conversation {
     
     public static void main(String[] args) {
         Location forest = new Location("You are in a lush forest. Surrounded by large maple trees and damp soil beneath you. Dappled light shines through the leaves. A path stretches out to the east and another to the north the rest is forest.", 11, false);
-        Plant shitake = new Plant("Shitake", "A patch of brown mushrooms growing from the base of a tree.", false, false, false);
-        Plant ivy = new Plant("Poison Ivy", "A spiraling plant with three shiny leaves at every arm", true, true, false);
-        Plant moss = new Plant("Moss", "Short little patches of soft green fronds, damp with dew", false, true, false);
+        Plant shitake = new Plant("shitake", "A patch of brown mushrooms growing from the base of a tree.", false, false, false);
+        Plant ivy = new Plant("poison ivy", "A spiraling plant with three shiny leaves at every arm", true, true, false);
+        Plant moss = new Plant("moss", "Short little patches of soft green fronds, damp with dew", false, true, true);
         forest.addPlant(shitake);
         forest.addPlant(moss);
         forest.addPlant(ivy);
@@ -161,7 +175,11 @@ public class Conversation {
             //if(response.equals("quit")) {
             //    active = false;
             //}
+            try{
             convo.response(me, userInput);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         userInput.close();
     }

@@ -37,13 +37,14 @@ public class Snail {
         this.health=10;
         System.out.println("You're a snail. Your name is " + this.name + " . Snails are hermaphrodites, so you are neither male or female. " + 
                         "You are currently holding 1/14th of your body weight in water. It's important to maintain this water level as it helps you produce slime, essential for movement, protection, and reproduction. Your shell, made of calcilum, is looking #fiiinne, and is utalizing a fibonaccii swirl for top notch structural intelligence. ");
-        System.out.println("type 'my options' to see what you can do");
+        System.out.println("type 'options' to see what you can do");
         this.inventory=new ArrayList<>();
         this.map = map;
         this.x=0;
         this.y=0;
         this.inShell = false;
         this.current=this.map.map[x][y];
+        this.current.description();
         }
     /**
      * 
@@ -51,6 +52,9 @@ public class Snail {
      */
     public boolean myHealth() {
         return !(this.health>0);
+    }
+    public String healthPoints(){
+        return "your health is " + this.health + "your water is" + this.water + "your food is" + this.food;
     }
     /**
      * snail gets dehydrated (possibly from dry environment)
@@ -181,7 +185,7 @@ public class Snail {
         if(!this.current.plants.get(s).isPlantable) {
             throw new RuntimeException("You cannot pick up that plant");
         }
-        if(this.current.plants.containsKey(s)) {
+        else if(this.current.plants.containsKey(s)) {
             this.inventory.add(s);
         }
         else {
@@ -225,12 +229,12 @@ public class Snail {
      * go north
      */
     public void goNorth() {
-        if(this.y>=0 && y<2) {
+        if(this.y>=0 && y<3) {
             this.y+=1;
             this.current=this.map.map[x][y];
             this.current.description();
             this.current.humidityEffect(this);
-            this.food=-1;
+            this.food-=1;
         }
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
@@ -240,7 +244,7 @@ public class Snail {
      * go south
      */
     public void goSouth() {
-        if(this.y>=0) {
+        if(this.y>=0 && this.y<3) {
             this.y-=1;
             this.current=this.map.map[x][y];
             this.current.description();
@@ -256,7 +260,7 @@ public class Snail {
      * go east
      */
     public void goEast() {
-        if(this.x>=0) {
+        if(this.x>=0 && this.x<3) {
             this.x+=1;
             this.current=this.map.map[x][y];
             this.current.description();
@@ -271,7 +275,7 @@ public class Snail {
      * go west
      */
     public void goWest() {
-        if(this.x>=0) {
+        if(this.x>=0 && this.y<3) {
             this.x-=1;
             this.current=this.map.map[x][y];
             this.current.description();

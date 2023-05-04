@@ -17,6 +17,7 @@ public class Plant {
         this.isPoison=isPoison;
         this.description=description; 
         this.hasCalcium = hasCalcium;
+        this.isPlantable = isPlantable;
        // this.size=5;
     }
     public Plant(String name, boolean isPoison) {
