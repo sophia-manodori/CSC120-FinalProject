@@ -134,11 +134,11 @@ public class Conversation {
         meadow.addPlant(delphiniums);
         meadow.addPlant(dahlias);
         meadow.addPlant(dandelions);
-        Location mountainTop = new Location("You have some how made your way to the top of a tall mountain. You are above the tree line and not much grows here due to the high altitude. the air is thin and dry but you can see for miles and miles. To the north there is nothing but endless forest streaching on forever, to the south you can see a large meadow with splashes of bright flowers and plants and further south is a marsh with birds flying over, to the west is a grand lake and south of that you see a garden, to the east is a small town with houses in neat rows down streets and further south of that is a tropical forest. ", 0, false)
+        Location mountainTop = new Location("You have some how made your way to the top of a tall mountain. You are above the tree line and not much grows here due to the high altitude. the air is thin and dry but you can see for miles and miles. To the north there is nothing but endless forest streaching on forever, to the south you can see a large meadow with splashes of bright flowers and plants and further south is a marsh with birds flying over, to the west is a grand lake and south of that you see a garden, to the east is a small town with houses in neat rows down streets and further south of that is a tropical forest. ", 0, false);
         Location desert = new Location("a sandy dry desert suck the moisture out of you as you enter it", 0, false);
         Location street = new Location ("a street lined with houses ", "an foot steps on you and crushes your shell find calcium rich food to repair it. there might be some fruit near by that has calcium", 3, false);
         Plant tulip = new Plant("Tulip","large, showy and brightly colored flowers planted along the street",false, 4, true);
-        Plant rose = new Plant("roses", "lovely bushes with large flowers in red growing in front of the white picket fences in every yard", false, true, false)
+        Plant rose = new Plant("roses", "lovely bushes with large flowers in red growing in front of the white picket fences in every yard", false, true, false);
         street.addPlant(tulip);
         street.addPlant(rose);
         Map map = new Map();
