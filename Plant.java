@@ -38,4 +38,7 @@ public class Plant {
     //public void eat() {
       //  this.size-= 1;
     //}
+    public boolean hasCalcium(boolean b) {
+        return false;
+    }
 }
