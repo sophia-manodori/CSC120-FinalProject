@@ -151,13 +151,13 @@ public class Snail {
             this.health();
             System.out.println("You have eaten the" + p + ". Your food level is now" + this.food);
         }
-        else if(this.current.plants.get(p).isPoison()) {
-            this.health=-9;
-            throw new RuntimeException("You ate poison. Your health has decreased by 9. You will either die, or must eat and drink to restore your health.");
-        }
         else if(this.current.plants.get(p).hasCalcium()){
             this.steppedOn = false;
             System.out.println("Your shell has been restored!");
+        }
+        else if(this.current.plants.get(p).isPoison()) {
+            this.health=-9;
+            throw new RuntimeException("You ate poison. Your health has decreased by 9. You will either die, or must eat and drink to restore your health.");
         }
         if(this.food>9) {
             System.out.println("You are already full");
