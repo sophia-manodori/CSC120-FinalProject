@@ -1,6 +1,5 @@
 import java.util.Scanner;
 public class Conversation {
-    int responseNum = 0;
     boolean active;
     public Conversation() {
         this.active=true;
@@ -91,6 +90,14 @@ public class Conversation {
             catch(Exception e) {
             System.out.println(e);
             }
+        else if(response.equals("repair shell")) {
+            try {
+                me.repair();
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
         else if(response.equals("retreat")) {
             me.retreat();
         }
@@ -105,6 +112,11 @@ public class Conversation {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+        }
+        else if(response.equals("drop")) {
+            System.out.println("What would you like to drop?");
+            String plant=userInput.nextLine();
+            me.drop(plant);
         }
         else if(response.equals("quit")) {
             System.out.println("Thanks for playing");
@@ -123,7 +135,7 @@ public class Conversation {
         forest.addPlant(shitake);
         forest.addPlant(moss);
         forest.addPlant(ivy);
-        Garden garden = new Garden("You find yourself in a beautiful garden with flourishing plants. There are paths to the north, south, and east. Injured Snail");
+        Garden garden = new Garden("You find yourself in a beautiful garden with flourishing plants. There are paths to the north, south, and east.", "You notice an injured snail hiding under a patch of leaves. It seems it is hungry and stepped on. If you wnat to help the snail, type 'help snail'");
         Location lake = new Location("You are on the shores of a great lake stretching as far as the eye can see to the north and west. The lake is a stunning site and lots of plants are growing in the shallows and around the shore. Paths behind you flow to the north and east. ", 10, true);
         Plant waterweed = new Plant("waterweed", "a weed growing in the water", false, false, false);
         Plant iris = new Plant("iris", "a plant with several violet-blue flowers with yellow-based sepals that emerge on sturdy stalks among tall sword-like leaves growing along the shore", false, true, false);

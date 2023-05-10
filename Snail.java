@@ -36,13 +36,14 @@ public class Snail {
         this.food=10;
         this.health=10;
         System.out.println("You're a snail. Your name is " + this.name + " . Snails are hermaphrodites, so you are neither male or female. " + 
-                        "You are currently holding 1/14th of your body weight in water. It's important to maintain this water level as it helps you produce slime, essential for movement, protection, and reproduction. Your shell, made of calcilum, is looking #fiiinne, and is utalizing a fibonaccii swirl for top notch structural intelligence. ");
+                        "You are currently holding 1/14th of your body weight in water in a pouch in your shell. It's important to maintain this water level as it helps you produce slime, essential for movement, protection, and reproduction. Your shell, made of calcilum, is looking #fiiinne, and is utalizing a fibonaccii swirl for top notch structural intelligence. ");
         System.out.println("type 'options' to see what you can do");
         this.inventory=new ArrayList<>();
         this.map = map;
         this.x=0;
         this.y=0;
         this.inShell = false;
+        this.steppedOn = false;
         this.current=this.map.map[x][y];
         this.current.description();
         }
@@ -87,6 +88,15 @@ public class Snail {
         }
         return steppedOn;
     }
+    public void repair(){
+        if (this.food>2 && this.water >=2 && this.steppedOn) {
+            dehydrate();
+            this.food-=3;
+            this.steppedOn=false;
+        } else {
+            throw new RuntimeException("You must be sufficiently fed and hydrated to repair your shell.");
+        }
+    }
 
     /**
      * snail drinks water at given location
@@ -111,7 +121,7 @@ public class Snail {
      * @return inShell
      */
     public boolean retreat() {
-        if(this.steppedOn = true){
+        if(this.steppedOn){
             System.out.println("You are unable to retreat into your shell because you currently don't have one.");
             this.inShell = false;
         }
@@ -187,6 +197,7 @@ public class Snail {
         }
         else if(this.current.plants.containsKey(s)) {
             this.inventory.add(s);
+            System.out.println("You have picked up the " + s);
         }
         else {
             throw new RuntimeException("You are small. It's best not to pick up several of the same things, for storage reasons. ");
@@ -223,7 +234,7 @@ public class Snail {
      * prints options
      */
     public void options() {
-        System.out.println("You are" + this.name + " the snail. Type 'pickup' to pick up an object. \n Type 'drop' to drop an object. \n Type 'smell' to smell a plant to check if it's poisonous. \n Type 'eat' to eat an object. \n Type 'go north', 'go south', 'go east', 'go west' to move. \nType 'health' to see your health points. \n Type 'retreat' to retreat into your shell if you feel danger.");
+        System.out.println("You are" + this.name + " the snail. Type 'pickup' to pick up an object. \n Type 'drop' to drop an object. \n Type 'smell' to smell a plant to check if it's poisonous. \n Type 'eat' to eat an object. \n Type 'go north', 'go south', 'go east', 'go west' to move. \nType 'health' to see your health points. \n Type 'retreat' to retreat into your shell if you feel danger, and emmerge to come out. \n Type 'repair' to repair your shell. ");
     }
     /**
      * go north
@@ -265,7 +276,7 @@ public class Snail {
             this.current=this.map.map[x][y];
             this.current.description();
             this.current.humidityEffect(this);
-            this.food=-1;
+            this.food-=1;
         }
         else{
             throw new RuntimeException("You have reached an endless forest. You are wandering. Turn back or try going a different direction");
@@ -297,8 +308,11 @@ public class Snail {
         if(!(this.y == 1)) {
             throw new RuntimeException("No snail to help here!");
         }
-        if(this.current.dropped.contains(s)) {
+        if(this.inventory.contains(s)) {
             System.out.println("You feed the snail the" + s +". They start to look revitalized. Snails can actually regenerate their antennae, and it seems this snail needed some extra nourishment to start to heal themselves. The snail gives you a wave of their good antennae and shoots you what you swear is... a wink? Scandelous. The snail turns, and begins to slowly make their way away.");
+        }
+        if(!this.inventory.contains(s)) {
+            System.out.println("You don't have that plant in your inventory");
         }
     }
     /**
@@ -306,14 +320,10 @@ public class Snail {
      */
     public void canHelpSnail() {
         if(this.x==0 && this.y==1) {
-            System.out.println("You decide to help the snail. It seems it needs some food. go find a plant, and pick it up. Come back and drop it in front of the snail, and type 'feed snail' when you've gotten the food. ");
+            System.out.println("You decide to help the snail. It seems it needs some food. go find a plant, and pick it up. Come back and type 'feed snail' when you've gotten the food. ");
         }
         else {
             System.out.println("no snail to be seen here!");
         }
-    }
-
-    public void layEggs() {
-        this.produceSlime();
     }
 }

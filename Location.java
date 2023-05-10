@@ -32,15 +32,15 @@ public class Location {
     }
 
     public void description() {
-        if(!this.hasPlayed) {
-            System.out.println(this.situation);
-            this.hasPlayed=true;
-        }
         System.out.println(this.description + " the humidity is " + this.humidity);
         System.out.println("You see the following plants:");
         Set<String> setOfKeys = this.plants.keySet();
         for(String s : setOfKeys) {
             System.out.println(plants.get(s).name + ": " + plants.get(s).description);
+        }
+        if(!this.hasPlayed) {
+            System.out.println(this.situation);
+            this.hasPlayed=true;
         }
     }
 
@@ -67,8 +67,8 @@ public class Location {
 
     public void humidityEffect(Snail s) {
         if(this.humidity<10) {
-            s.dehydrate();
             System.out.println("Oh no! It's very dry. You have been dehydrated by the heat.");
+            s.dehydrate();
         }
     }
     public void options(Snail s) {
